@@ -209,6 +209,12 @@ static NSString *const MessageHanderName = @"ReactNative";
     [_webView loadHTMLString:@"" baseURL:nil];
     return;
   }
+    
+    if(request.URL.isFileURL) {
+        [_webView loadFileURL:request.URL allowingReadAccessToURL:request.URL];
+        return;
+    }
+    
   [_webView loadRequest:request];
 }
 
